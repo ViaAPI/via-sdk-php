@@ -1,0 +1,23 @@
+{
+    "name": "viaapi/via-php-sdk",
+    "description": "PHP SDK for using ViaAPI products.",
+    "keywords": ["viaapi", "trivia", "dictionary"],
+    "type": "library",
+    "license": "MIT",
+    "version": "v1.0.0",
+    "authors": [
+        {
+            "name": "ViaAPI Developers",
+            "email": "sdk@viaapi.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "ViaAPI\\ViaSdkPhp\\": "src/"
+        }
+    },
+    "require": {
+        "php": ">=7.1.3",
+        "guzzlehttp/guzzle": "^7.0"
+    }
+}
