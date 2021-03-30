@@ -1,5 +1,5 @@
 {
-    "name": "viaapi/via-php-sdk",
+    "name": "viaapi/via-sdk-php",
     "description": "PHP SDK for using ViaAPI products.",
     "keywords": ["viaapi", "trivia", "dictionary"],
     "type": "library",
