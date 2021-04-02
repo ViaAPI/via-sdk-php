@@ -3,12 +3,11 @@
 
 namespace ViaAPI\ViaSdkPhp\Services\Dictionary\Handlers;
 
-
-use ViaAPI\ViaSdkPhp\Contracts\RequestHandlerInterface;
-use ViaAPI\ViaSdkPhp\Contracts\RequestInterface;
+;
 use ViaAPI\ViaSdkPhp\Exceptions\InvalidArgumentException;
+use ViaAPI\ViaSdkPhp\Services\AbstractHandler;
 
-class DictionaryHandler implements RequestHandlerInterface, RequestInterface
+class DictionaryHandler extends AbstractHandler
 {
     /** @var string */
     private $title;

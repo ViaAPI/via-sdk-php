@@ -35,6 +35,6 @@ class TriviaClient extends ViaClient
 
     function getClientUrl(): string
     {
-        return 'https://trivia.api.dev.viaapi.com';
+        return 'https://trivia.api.viaapi.com';
     }
 }

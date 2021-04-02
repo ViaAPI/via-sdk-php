@@ -4,7 +4,8 @@
 namespace ViaAPI\ViaSdkPhp\Contracts;
 
 
-interface RequestInterface
-{
+use ViaAPI\ViaSdkPhp\ViaResponse;
+
+interface RequestInterface {
     public function toOptions(): array;
 }

@@ -4,11 +4,10 @@
 namespace ViaAPI\ViaSdkPhp\Services\Dictionary\Handlers;
 
 
-use ViaAPI\ViaSdkPhp\Contracts\RequestHandlerInterface;
-use ViaAPI\ViaSdkPhp\Contracts\RequestInterface;
 use ViaAPI\ViaSdkPhp\Exceptions\InvalidArgumentException;
+use ViaAPI\ViaSdkPhp\Services\AbstractHandler;
 
-class WordHandler implements RequestHandlerInterface, RequestInterface
+class WordHandler extends AbstractHandler
 {
     /** @var string */
     private $word;
@@ -75,7 +74,9 @@ class WordHandler implements RequestHandlerInterface, RequestInterface
      */
     public function setDictionaries(array $dictionaries): WordHandler
     {
-        $this->dictionaries = $dictionaries;
+        $this->dictionaries = array_map(function ($dictionary) {
+            return is_string($dictionary) ? $dictionary : new DictionaryHandler($dictionary);
+        }, $dictionaries);
         return $this;
     }
 

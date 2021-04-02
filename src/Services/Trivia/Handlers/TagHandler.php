@@ -4,11 +4,10 @@
 namespace ViaAPI\ViaSdkPhp\Services\Trivia\Handlers;
 
 
-use ViaAPI\ViaSdkPhp\Contracts\RequestHandlerInterface;
-use ViaAPI\ViaSdkPhp\Contracts\RequestInterface;
 use ViaAPI\ViaSdkPhp\Exceptions\InvalidArgumentException;
+use ViaAPI\ViaSdkPhp\Services\AbstractHandler;
 
-class TagHandler implements RequestHandlerInterface, RequestInterface
+class TagHandler extends AbstractHandler
 {
     /** @var string|null */
     private $icon;

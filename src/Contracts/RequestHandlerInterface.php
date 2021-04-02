@@ -6,7 +6,4 @@ namespace ViaAPI\ViaSdkPhp\Contracts;
 
 use ViaAPI\ViaSdkPhp\ViaResponse;
 
-interface RequestHandlerInterface
-{
-    //
-}
+interface RequestHandlerInterface extends RequestInterface {}

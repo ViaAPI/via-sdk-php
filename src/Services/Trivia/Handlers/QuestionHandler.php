@@ -5,14 +5,13 @@ namespace ViaAPI\ViaSdkPhp\Services\Trivia\Handlers;
 
 
 use ViaAPI\ViaSdkPhp\Contracts\CollectionInterface;
-use ViaAPI\ViaSdkPhp\Contracts\RequestHandlerInterface;
-use ViaAPI\ViaSdkPhp\Contracts\RequestInterface;
 use ViaAPI\ViaSdkPhp\Exceptions\InvalidArgumentException;
+use ViaAPI\ViaSdkPhp\Services\AbstractHandler;
 use ViaAPI\ViaSdkPhp\Services\Trivia\Collections\Banner;
 use ViaAPI\ViaSdkPhp\Services\Trivia\Collections\Choice;
 use ViaAPI\ViaSdkPhp\Services\Trivia\Collections\Label;
 
-class QuestionHandler implements RequestHandlerInterface, RequestInterface
+class QuestionHandler extends AbstractHandler
 {
     /** @var Banner|null */
     private $banner;
@@ -145,7 +144,10 @@ class QuestionHandler implements RequestHandlerInterface, RequestInterface
      */
     public function setTags(array $tags): QuestionHandler
     {
-        $this->tags = $tags;
+        $this->tags = array_map(function ($tag) {
+            return is_string($tag) ? $tag : new TagHandler($tag);
+        }, $tags);
+
         return $this;
     }
 

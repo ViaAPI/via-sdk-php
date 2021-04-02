@@ -18,7 +18,7 @@ class ViaResponse
     /** @var string */
     private $message;
 
-    /** @var mixed */
+    /** @var ViaResult */
     private $result;
 
     /** @var \Exception |null */
@@ -96,7 +96,7 @@ class ViaResponse
     }
 
     /**
-     * @return mixed
+     * @return ViaResult
      */
     public function getResult()
     {
@@ -104,7 +104,7 @@ class ViaResponse
     }
 
     /**
-     * @param mixed $result
+     * @param ViaResult $result
      *
      * @return ViaResponse
      */
