@@ -24,7 +24,7 @@ class Questions extends TriviaClient implements ComponentInterface
     public function list(?QuestionFilter $filter = null): ViaResponse
     {
         $filter = $filter ?? new QuestionFilter();
-        return $this->makeRequest(Routes::QUESTION_LIST, 'GET', $filter);
+        return $this->makeRequest(Routes::QUESTION_LIST, Routes::METHOD_GET, $filter);
     }
 
     /**
@@ -37,6 +37,20 @@ class Questions extends TriviaClient implements ComponentInterface
      */
     public function insert(QuestionHandler $handler): ViaResponse
     {
-        return $this->makeRequest(Routes::QUESTION_CREATE, 'POST', $handler);
+        return $this->makeRequest(Routes::QUESTION_CREATE, Routes::METHOD_POST, $handler);
     }
+
+    /**
+     * Update multi-choice single question  entry.
+     * (!) Requires grant access.
+     *
+     * @param QuestionHandler $handler
+     *
+     * @return ViaResponse
+     */
+    public function update($id, QuestionHandler $handler): ViaResponse
+    {
+        return $this->makeRequest(Routes::fetchRoute(Routes::QUESTION_UPDATE, ['id' => $id]), Routes::METHOD_PUT, $handler);
+    }
+
 }

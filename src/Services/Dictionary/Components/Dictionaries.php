@@ -24,7 +24,7 @@ class Dictionaries extends DictionaryClient implements ComponentInterface
     public function list(?DictionaryFilter $filter = null): ViaResponse
     {
         $filter = $filter ?? new DictionaryFilter();
-        return $this->makeRequest(Routes::DICTIONARY_LIST, 'GET', $filter);
+        return $this->makeRequest(Routes::DICTIONARY_LIST, Routes::METHOD_GET, $filter);
     }
 
     /**
@@ -37,8 +37,21 @@ class Dictionaries extends DictionaryClient implements ComponentInterface
      */
     public function insert(DictionaryHandler $handler): ViaResponse
     {
-        return $this->makeRequest(Routes::DICTIONARY_CREATE, 'POST', $handler);
+        return $this->makeRequest(Routes::DICTIONARY_CREATE, Routes::METHOD_POST, $handler);
     }
 
+
+    /**
+     * Update dictionary  entry.
+     * (!) Requires grant access.
+     *
+     * @param DictionaryHandler $handler
+     *
+     * @return ViaResponse
+     */
+    public function update($id, DictionaryHandler $handler): ViaResponse
+    {
+        return $this->makeRequest(Routes::fetchRoute(Routes::DICTIONARY_UPDATE, ['id' => $id]), Routes::METHOD_PUT, $handler);
+    }
 
 }

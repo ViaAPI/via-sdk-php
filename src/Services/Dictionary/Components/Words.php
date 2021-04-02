@@ -24,7 +24,7 @@ class Words extends DictionaryClient implements ComponentInterface
     public function list(?WordFilter $filter = null): ViaResponse
     {
         $filter = $filter ?? new WordFilter();
-        return $this->makeRequest(Routes::WORD_LIST, 'GET', $filter);
+        return $this->makeRequest(Routes::WORD_LIST, Routes::METHOD_GET, $filter);
     }
 
     /**
@@ -37,7 +37,20 @@ class Words extends DictionaryClient implements ComponentInterface
      */
     public function insert(WordHandler $handler): ViaResponse
     {
-        return $this->makeRequest(Routes::WORD_CREATE, 'POST', $handler);
+        return $this->makeRequest(Routes::WORD_CREATE, Routes::METHOD_POST, $handler);
+    }
+
+    /**
+     * Update word  entry.
+     * (!) Requires grant access.
+     *
+     * @param WordHandler $handler
+     *
+     * @return ViaResponse
+     */
+    public function update($id, WordHandler $handler): ViaResponse
+    {
+        return $this->makeRequest(Routes::fetchRoute(Routes::WORD_UPDATE, ['id' => $id]), Routes::METHOD_PUT, $handler);
     }
 
 }

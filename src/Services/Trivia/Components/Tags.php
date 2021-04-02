@@ -25,7 +25,7 @@ class Tags extends TriviaClient implements ComponentInterface
     public function list(?TagFilter $filter = null): ViaResponse
     {
         $filter = $filter ?? new TagFilter();
-        return $this->makeRequest(Routes::TAG_LIST, 'GET', $filter);
+        return $this->makeRequest(Routes::TAG_LIST, Routes::METHOD_GET, $filter);
     }
 
     /**
@@ -38,7 +38,20 @@ class Tags extends TriviaClient implements ComponentInterface
      */
     public function insert(TagHandler $handler): ViaResponse
     {
-        return $this->makeRequest(Routes::TAG_CREATE, 'POST', $handler);
+        return $this->makeRequest(Routes::TAG_CREATE, Routes::METHOD_POST, $handler);
+    }
+
+    /**
+     * Update tag  entry.
+     * (!) Requires grant access.
+     *
+     * @param TagHandler $handler
+     *
+     * @return ViaResponse
+     */
+    public function update($id, TagHandler $handler): ViaResponse
+    {
+        return $this->makeRequest(Routes::fetchRoute(Routes::TAG_UPDATE, ['id' => $id]), Routes::METHOD_PUT, $handler);
     }
 
 }

@@ -6,6 +6,13 @@ namespace ViaAPI\ViaSdkPhp;
 
 class Routes
 {
+    // Method types
+    public const METHOD_GET = 'GET';
+    public const METHOD_POST = 'POST';
+    public const METHOD_PUT = 'PUT';
+    public const METHOD_PATCH = 'PATCH';
+    public const METHOD_DELETE = 'DELETE';
+
     // List Endpoints
     public const QUESTION_LIST = '/v1/questions/{locale}/mc/sa';
     public const TAG_LIST = '/v1/tags/{locale}';
@@ -17,6 +24,12 @@ class Routes
     public const TAG_CREATE = '/v1/tag/{locale}';
     public const DICTIONARY_CREATE = '/v1/dictionary/{locale}';
     public const WORD_CREATE = '/v1/word/{locale}';
+
+    // Update Endpoints
+    public const QUESTION_UPDATE = '/v1/question/{locale}/mc/sa/{id}';
+    public const TAG_UPDATE = '/v1/tag/{locale}/{id}';
+    public const DICTIONARY_UPDATE = '/v1/dictionary/{locale}/{id}';
+    public const WORD_UPDATE = '/v1/word/{locale}/{id}';
 
     /**
      * Provides to replace values instead of dynamic values

@@ -4,7 +4,7 @@
     "keywords": ["viaapi", "trivia", "dictionary"],
     "type": "library",
     "license": "MIT",
-    "version": "v1.0.0",
+    "version": "v1.0.1",
     "authors": [
         {
             "name": "ViaAPI Developers",
