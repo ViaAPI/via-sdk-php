@@ -1,6 +1,8 @@
 <?php
 
+
 namespace ViaAPI\ViaSdkPhp\Constants;
+
 
 class StatusConstants
 {

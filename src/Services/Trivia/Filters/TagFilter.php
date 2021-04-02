@@ -4,11 +4,11 @@ namespace ViaAPI\ViaSdkPhp\Services\Trivia\Filters;
 
 use ViaAPI\ViaSdkPhp\Comparisons;
 use ViaAPI\ViaSdkPhp\Constants\StatusConstants;
-use ViaAPI\ViaSdkPhp\Contracts\FilterInterface;
+use ViaAPI\ViaSdkPhp\Contracts\RequestInterface;
 use ViaAPI\ViaSdkPhp\Exceptions\ExceededLimitException;
 use ViaAPI\ViaSdkPhp\Exceptions\InvalidArgumentException;
 
-class TagFilter implements FilterInterface
+class TagFilter implements RequestInterface
 {
     /** @var int */
     private $limit = 50;

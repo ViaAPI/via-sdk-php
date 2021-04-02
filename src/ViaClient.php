@@ -2,10 +2,8 @@
 
 namespace ViaAPI\ViaSdkPhp;
 
-use ViaAPI\ViaSdkPhp\Contracts\FilterInterface;
+use ViaAPI\ViaSdkPhp\Contracts\RequestInterface;
 use GuzzleHttp\Client;
-use GuzzleHttp\Exception\ClientException;
-use GuzzleHttp\Exception\GuzzleException;
 
 /**
  * Class ViaClient
@@ -47,15 +45,15 @@ abstract class ViaClient
     /**
      * @param string               $uri
      * @param string               $method
-     * @param FilterInterface|null $filter
+     * @param RequestInterface|null $requestOptions
      *
      * @return ViaResponse
      */
-    protected function makeRequest(string $uri, string $method = 'GET', FilterInterface $filter): ViaResponse
+    protected function makeRequest(string $uri, string $method = 'GET', RequestInterface $requestOptions): ViaResponse
     {
         try {
             $uri = $this->localeReplacements($uri);
-            $response = $this->getClient()->request($method, $uri, $filter->toOptions());
+            $response = $this->getClient()->request($method, $uri, $requestOptions->toOptions());
         } catch (\Exception $e) {
             return ViaResponse::createExceptionResponse($e);
         }

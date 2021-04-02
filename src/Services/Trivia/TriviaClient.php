@@ -1,6 +1,8 @@
 <?php
 
+
 namespace ViaAPI\ViaSdkPhp\Services\Trivia;
+
 
 use ViaAPI\ViaSdkPhp\Services\Trivia\Components\Tags;
 use ViaAPI\ViaSdkPhp\Services\Trivia\Components\Questions;
@@ -33,6 +35,6 @@ class TriviaClient extends ViaClient
 
     function getClientUrl(): string
     {
-        return 'https://trivia.api.viaapi.com';
+        return 'https://trivia.api.dev.viaapi.com';
     }
 }

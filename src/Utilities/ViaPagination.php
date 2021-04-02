@@ -2,6 +2,7 @@
 
 namespace ViaAPI\ViaSdkPhp\Utilities;
 
+
 class ViaPagination
 {
     /**

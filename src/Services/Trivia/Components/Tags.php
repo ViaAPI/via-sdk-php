@@ -5,6 +5,7 @@ namespace ViaAPI\ViaSdkPhp\Services\Trivia\Components;
 use ViaAPI\ViaSdkPhp\Contracts\ComponentInterface;
 use ViaAPI\ViaSdkPhp\Routes;
 use ViaAPI\ViaSdkPhp\Services\Trivia\Filters\TagFilter;
+use ViaAPI\ViaSdkPhp\Services\Trivia\Handlers\TagHandler;
 use ViaAPI\ViaSdkPhp\Services\Trivia\TriviaClient;
 use ViaAPI\ViaSdkPhp\Traits\HasFilter;
 use ViaAPI\ViaSdkPhp\ViaResponse;
@@ -25,6 +26,19 @@ class Tags extends TriviaClient implements ComponentInterface
     {
         $filter = $filter ?? new TagFilter();
         return $this->makeRequest(Routes::TAG_LIST, 'GET', $filter);
+    }
+
+    /**
+     * Insert tag entry.
+     * (!) Requires grant access.
+     *
+     * @param TagHandler $handler
+     *
+     * @return ViaResponse
+     */
+    public function insert(TagHandler $handler): ViaResponse
+    {
+        return $this->makeRequest(Routes::TAG_CREATE, 'POST', $handler);
     }
 
 }

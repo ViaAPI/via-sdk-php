@@ -1,6 +1,8 @@
 <?php
 
+
 namespace ViaAPI\ViaSdkPhp\Traits;
+
 
 use ViaAPI\ViaSdkPhp\Contracts\FilterInterface;
 use ViaAPI\ViaSdkPhp\Trivia\Exception\ExceededLimitException;

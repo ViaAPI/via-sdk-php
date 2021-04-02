@@ -4,7 +4,7 @@
 namespace ViaAPI\ViaSdkPhp\Contracts;
 
 
-interface FilterInterface
+interface RequestInterface
 {
     public function toOptions(): array;
 }

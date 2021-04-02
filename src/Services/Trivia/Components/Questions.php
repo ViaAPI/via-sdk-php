@@ -5,6 +5,7 @@ namespace ViaAPI\ViaSdkPhp\Services\Trivia\Components;
 use ViaAPI\ViaSdkPhp\Contracts\ComponentInterface;
 use ViaAPI\ViaSdkPhp\Routes;
 use ViaAPI\ViaSdkPhp\Services\Trivia\Filters\QuestionFilter;
+use ViaAPI\ViaSdkPhp\Services\Trivia\Handlers\QuestionHandler;
 use ViaAPI\ViaSdkPhp\Services\Trivia\TriviaClient;
 use ViaAPI\ViaSdkPhp\Traits\HasFilter;
 use ViaAPI\ViaSdkPhp\ViaResponse;
@@ -24,5 +25,18 @@ class Questions extends TriviaClient implements ComponentInterface
     {
         $filter = $filter ?? new QuestionFilter();
         return $this->makeRequest(Routes::QUESTION_LIST, 'GET', $filter);
+    }
+
+    /**
+     * Insert multi-choice single question  entry.
+     * (!) Requires grant access.
+     *
+     * @param QuestionHandler $handler
+     *
+     * @return ViaResponse
+     */
+    public function insert(QuestionHandler $handler): ViaResponse
+    {
+        return $this->makeRequest(Routes::QUESTION_CREATE, 'POST', $handler);
     }
 }

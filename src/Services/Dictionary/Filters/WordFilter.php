@@ -1,14 +1,16 @@
 <?php
 
+
 namespace ViaAPI\ViaSdkPhp\Services\Dictionary\Filters;
+
 
 use ViaAPI\ViaSdkPhp\Comparisons;
 use ViaAPI\ViaSdkPhp\Constants\StatusConstants;
-use ViaAPI\ViaSdkPhp\Contracts\FilterInterface;
+use ViaAPI\ViaSdkPhp\Contracts\RequestInterface;
 use ViaAPI\ViaSdkPhp\Exceptions\ExceededLimitException;
 use ViaAPI\ViaSdkPhp\Exceptions\InvalidArgumentException;
 
-class WordFilter implements FilterInterface
+class WordFilter implements RequestInterface
 {
     /** @var int */
     private $limit = 50;
