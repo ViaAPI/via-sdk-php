@@ -31,6 +31,18 @@ class Routes
     public const DICTIONARY_UPDATE = '/v1/dictionary/{locale}/{id}';
     public const WORD_UPDATE = '/v1/word/{locale}/{id}';
 
+    // Retrieve Endpoints
+    public const QUESTION_RETRIEVE = '/v1/question/{locale}/mc/sa/{id}';
+    public const TAG_RETRIEVE = '/v1/tag/{locale}/{id}';
+    public const DICTIONARY_RETRIEVE = '/v1/dictionary/{locale}/{id}';
+    public const WORD_RETRIEVE = '/v1/word/{locale}/{id}';
+
+    // Delete Endpoints
+    public const QUESTION_DELETE = '/v1/question/{locale}/mc/sa/{id}';
+    public const TAG_DELETE = '/v1/tag/{locale}/{id}';
+    public const DICTIONARY_DELETE = '/v1/dictionary/{locale}/{id}';
+    public const WORD_DELETE = '/v1/word/{locale}/{id}';
+
     /**
      * Provides to replace values instead of dynamic values
      *

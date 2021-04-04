@@ -40,18 +40,44 @@ class Dictionaries extends DictionaryClient implements ComponentInterface
         return $this->makeRequest(Routes::DICTIONARY_CREATE, Routes::METHOD_POST, $handler);
     }
 
-
     /**
      * Update dictionary  entry.
      * (!) Requires grant access.
      *
+     * @param $id
      * @param DictionaryHandler $handler
      *
      * @return ViaResponse
      */
     public function update($id, DictionaryHandler $handler): ViaResponse
     {
-        return $this->makeRequest(Routes::fetchRoute(Routes::DICTIONARY_UPDATE, ['id' => $id]), Routes::METHOD_PUT, $handler);
+        return $this->makeRequest(Routes::fetchRoute(Routes::DICTIONARY_UPDATE, ['{id}' => $id]), Routes::METHOD_PUT, $handler);
+    }
+
+    /**
+     * Retrieve dictionary entry.
+     * (!) Requires grant access.
+     *
+     * @param $id
+     *
+     * @return ViaResponse
+     */
+    public function retrieve($id): ViaResponse
+    {
+        return $this->makeRequest(Routes::fetchRoute(Routes::DICTIONARY_RETRIEVE, ['{id}' => $id]), Routes::METHOD_GET);
+    }
+
+    /**
+     * Delete dictionary entry.
+     * (!) Requires grant access.
+     *
+     * @param $id
+     *
+     * @return ViaResponse
+     */
+    public function delete($id): ViaResponse
+    {
+        return $this->makeRequest(Routes::fetchRoute(Routes::DICTIONARY_DELETE, ['{id}' => $id]), Routes::METHOD_DELETE);
     }
 
 }

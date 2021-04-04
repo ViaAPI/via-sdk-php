@@ -44,13 +44,40 @@ class Questions extends TriviaClient implements ComponentInterface
      * Update multi-choice single question  entry.
      * (!) Requires grant access.
      *
+     * @param $id
      * @param QuestionHandler $handler
      *
      * @return ViaResponse
      */
     public function update($id, QuestionHandler $handler): ViaResponse
     {
-        return $this->makeRequest(Routes::fetchRoute(Routes::QUESTION_UPDATE, ['id' => $id]), Routes::METHOD_PUT, $handler);
+        return $this->makeRequest(Routes::fetchRoute(Routes::QUESTION_UPDATE, ['{id}' => $id]), Routes::METHOD_PUT, $handler);
+    }
+
+    /**
+     * Retrieve multi-choice single question  entry.
+     * (!) Requires grant access.
+     *
+     * @param $id
+     *
+     * @return ViaResponse
+     */
+    public function retrieve($id): ViaResponse
+    {
+        return $this->makeRequest(Routes::fetchRoute(Routes::QUESTION_RETRIEVE, ['{id}' => $id]), Routes::METHOD_GET);
+    }
+
+    /**
+     * Delete multi-choice single question  entry.
+     * (!) Requires grant access.
+     *
+     * @param $id
+     *
+     * @return ViaResponse
+     */
+    public function delete($id): ViaResponse
+    {
+        return $this->makeRequest(Routes::fetchRoute(Routes::QUESTION_DELETE, ['{id}' => $id]), Routes::METHOD_DELETE);
     }
 
 }

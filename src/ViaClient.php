@@ -49,11 +49,12 @@ abstract class ViaClient
      *
      * @return ViaResponse
      */
-    protected function makeRequest(string $uri, string $method = 'GET', RequestInterface $requestOptions): ViaResponse
+    protected function makeRequest(string $uri, string $method = 'GET', ?RequestInterface $requestOptions = null): ViaResponse
     {
         try {
             $uri = $this->localeReplacements($uri);
-            $response = $this->getClient()->request($method, $uri, $requestOptions->toOptions());
+            $options = $requestOptions instanceof RequestInterface ? $requestOptions->toOptions() : [];
+            $response = $this->getClient()->request($method, $uri, $options);
         } catch (\Exception $e) {
             return ViaResponse::createExceptionResponse($e);
         }

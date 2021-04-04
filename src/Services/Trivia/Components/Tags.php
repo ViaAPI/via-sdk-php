@@ -45,13 +45,40 @@ class Tags extends TriviaClient implements ComponentInterface
      * Update tag  entry.
      * (!) Requires grant access.
      *
+     * @param $id
      * @param TagHandler $handler
      *
      * @return ViaResponse
      */
     public function update($id, TagHandler $handler): ViaResponse
     {
-        return $this->makeRequest(Routes::fetchRoute(Routes::TAG_UPDATE, ['id' => $id]), Routes::METHOD_PUT, $handler);
+        return $this->makeRequest(Routes::fetchRoute(Routes::TAG_UPDATE, ['{id}' => $id]), Routes::METHOD_PUT, $handler);
+    }
+
+    /**
+     * Retrieve tag  entry.
+     * (!) Requires grant access.
+     *
+     * @param $id
+     *
+     * @return ViaResponse
+     */
+    public function retrieve($id): ViaResponse
+    {
+        return $this->makeRequest(Routes::fetchRoute(Routes::TAG_RETRIEVE, ['{id}' => $id]), Routes::METHOD_GET);
+    }
+
+    /**
+     * Delete tag  entry.
+     * (!) Requires grant access.
+     *
+     * @param $id
+     *
+     * @return ViaResponse
+     */
+    public function delete($id): ViaResponse
+    {
+        return $this->makeRequest(Routes::fetchRoute(Routes::TAG_DELETE, ['{id}' => $id]), Routes::METHOD_DELETE);
     }
 
 }

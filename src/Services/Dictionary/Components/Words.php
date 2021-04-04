@@ -44,13 +44,40 @@ class Words extends DictionaryClient implements ComponentInterface
      * Update word  entry.
      * (!) Requires grant access.
      *
+     * @param $id
      * @param WordHandler $handler
      *
      * @return ViaResponse
      */
     public function update($id, WordHandler $handler): ViaResponse
     {
-        return $this->makeRequest(Routes::fetchRoute(Routes::WORD_UPDATE, ['id' => $id]), Routes::METHOD_PUT, $handler);
+        return $this->makeRequest(Routes::fetchRoute(Routes::WORD_UPDATE, ['{id}' => $id]), Routes::METHOD_PUT, $handler);
+    }
+
+    /**
+     * Retrieve word entry.
+     * (!) Requires grant access.
+     *
+     * @param $id
+     *
+     * @return ViaResponse
+     */
+    public function retrieve($id): ViaResponse
+    {
+        return $this->makeRequest(Routes::fetchRoute(Routes::WORD_RETRIEVE, ['{id}' => $id]), Routes::METHOD_GET);
+    }
+
+    /**
+     * Delete word entry.
+     * (!) Requires grant access.
+     *
+     * @param $id
+     *
+     * @return ViaResponse
+     */
+    public function delete($id): ViaResponse
+    {
+        return $this->makeRequest(Routes::fetchRoute(Routes::WORD_DELETE, ['{id}' => $id]), Routes::METHOD_DELETE);
     }
 
 }
