@@ -34,6 +34,6 @@ class DictionaryClient extends ViaClient
 
     function getClientUrl(): string
     {
-        return 'https://dictionary.api.dev.viaapi.com';
+        return 'https://dictionary.api.viaapi.com';
     }
 }
