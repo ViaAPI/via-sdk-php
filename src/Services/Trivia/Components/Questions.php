@@ -5,6 +5,7 @@ namespace ViaAPI\ViaSdkPhp\Services\Trivia\Components;
 use ViaAPI\ViaSdkPhp\Contracts\ComponentInterface;
 use ViaAPI\ViaSdkPhp\Routes;
 use ViaAPI\ViaSdkPhp\Services\Trivia\Filters\QuestionFilter;
+use ViaAPI\ViaSdkPhp\Services\Trivia\Handlers\FeedChoicesHandler;
 use ViaAPI\ViaSdkPhp\Services\Trivia\Handlers\QuestionHandler;
 use ViaAPI\ViaSdkPhp\Services\Trivia\TriviaClient;
 use ViaAPI\ViaSdkPhp\Traits\HasFilter;
@@ -78,6 +79,19 @@ class Questions extends TriviaClient implements ComponentInterface
     public function delete($id): ViaResponse
     {
         return $this->makeRequest(Routes::fetchRoute(Routes::QUESTION_DELETE, ['{id}' => $id]), Routes::METHOD_DELETE);
+    }
+
+    /**
+     * Feed choices stats.
+     * (!) Requires grant access.
+     *
+     * @param FeedChoicesHandler $handler
+     *
+     * @return ViaResponse
+     */
+    public function feed(FeedChoicesHandler $handler): ViaResponse
+    {
+        return $this->makeRequest(Routes::FEED_STATS_QUESTION_CHOICES, Routes::METHOD_POST, $handler);
     }
 
 }

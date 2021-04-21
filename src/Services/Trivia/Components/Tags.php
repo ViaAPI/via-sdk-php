@@ -6,6 +6,7 @@ use ViaAPI\ViaSdkPhp\Contracts\ComponentInterface;
 use ViaAPI\ViaSdkPhp\Routes;
 use ViaAPI\ViaSdkPhp\Services\Trivia\Filters\TagFilter;
 use ViaAPI\ViaSdkPhp\Services\Trivia\Handlers\TagHandler;
+use ViaAPI\ViaSdkPhp\Services\Trivia\Handlers\TagMergeHandler;
 use ViaAPI\ViaSdkPhp\Services\Trivia\TriviaClient;
 use ViaAPI\ViaSdkPhp\Traits\HasFilter;
 use ViaAPI\ViaSdkPhp\ViaResponse;
@@ -79,6 +80,19 @@ class Tags extends TriviaClient implements ComponentInterface
     public function delete($id): ViaResponse
     {
         return $this->makeRequest(Routes::fetchRoute(Routes::TAG_DELETE, ['{id}' => $id]), Routes::METHOD_DELETE);
+    }
+
+    /**
+     * Merge questions of a tag into others.
+     * (!) Requires grant access.
+     *
+     * @param TagMergeHandler $handler
+     *
+     * @return ViaResponse
+     */
+    public function merge(TagMergeHandler $handler): ViaResponse
+    {
+        return $this->makeRequest(Routes::MERGE_TAGS, Routes::METHOD_PATCH, $handler);
     }
 
 }
