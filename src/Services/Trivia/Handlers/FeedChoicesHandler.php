@@ -87,12 +87,10 @@ class FeedChoicesHandler extends AbstractHandler
     {
         foreach ($choices as $choice) {
             if (!$choice instanceof ChoiceStat)
-                throw new InvalidArgumentException('Invalid choices information. Please read the documentation');
+                throw new InvalidArgumentException('ChoiceStat must be instance of ' . ChoiceStat::class);
         }
 
-        $this->choices = array_map(function ($item) {
-            return new ChoiceStat($item);
-        }, $choices);
+        $this->choices = $choices;
 
         return $this;
     }

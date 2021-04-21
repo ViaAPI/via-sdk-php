@@ -48,6 +48,11 @@ class ChoiceStat implements CollectionInterface
      */
     public function setStats(array $stats): ChoiceStat
     {
+        foreach ($stats as $stat) {
+            if (!$stat instanceof ChoiceStatItem)
+                throw new InvalidArgumentException("Stat item must be instance of " . ChoiceStatItem::class);
+        }
+        
         $this->stats = $stats;
         return $this;
     }
