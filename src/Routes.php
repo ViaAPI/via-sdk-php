@@ -43,6 +43,12 @@ class Routes
     public const DICTIONARY_DELETE = '/v1/dictionary/{locale}/{id}';
     public const WORD_DELETE = '/v1/word/{locale}/{id}';
 
+    // Feed Endpoints
+    public const FEED_STATS_QUESTION_CHOICES = '/v1/feed/stats/{locale}/choices';
+
+    // Merge Endpoints
+    public const MERGE_TAGS = '/v1/tags/{locale}/merge';
+
     /**
      * Provides to replace values instead of dynamic values
      *
