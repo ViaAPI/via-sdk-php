@@ -1,3 +1,7 @@
+## v1.0.4
+### Fixes
+- Some datetime fields to handle as a string at Filter classes
+
 ## v1.0.2
 ### Added
 - Retrieve method for Dictionary, Word, Question and Tag
