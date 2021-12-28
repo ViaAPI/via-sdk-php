@@ -117,7 +117,7 @@ class TagFilter implements RequestInterface
     public function setCreatedAt(array $createdAt): TagFilter
     {
         foreach ($createdAt as $comparison => $date) {
-            if (!$date instanceof \DateTime) {
+            if (!is_string($date)) {
                 throw new InvalidArgumentException('Invalid argument for date. Please read the documentation.');
             }
 
@@ -143,7 +143,7 @@ class TagFilter implements RequestInterface
     public function setUpdatedAt(array $updatedAt): TagFilter
     {
         foreach ($updatedAt as $comparison => $date) {
-            if (!$date instanceof \DateTime) {
+            if (!is_string($date)) {
                 throw new InvalidArgumentException('Invalid argument for date. Please read the documentation.');
             }
 
@@ -237,15 +237,11 @@ class TagFilter implements RequestInterface
         }
 
         if (!empty($this->getCreatedAt())) {
-            $query['createdAt'] = array_map(function (\DateTime $date) {
-                return $date->format('Y-m-d H:i:s');
-            }, $this->getCreatedAt());
+            $query['createdAt'] = $this->getCreatedAt();
         }
 
         if (!empty($this->getUpdatedAt())) {
-            $query['updatedAt'] = array_map(function (\DateTime $date) {
-                return $date->format('Y-m-d H:i:s');
-            }, $this->getUpdatedAt());
+            $query['updatedAt'] = $this->getUpdatedAt();
         }
 
         if (!empty($this->getStatus())) {

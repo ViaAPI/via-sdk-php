@@ -117,11 +117,13 @@ class DictionaryFilter implements RequestInterface
     public function setCreatedAt(array $createdAt): DictionaryFilter
     {
         foreach ($createdAt as $comparison => $date) {
-            if (!$date instanceof \DateTime)
+            if (!is_string($date)) {
                 throw new InvalidArgumentException('Invalid argument for date. Please read the documentation.');
+            }
 
-            if (!Comparisons::checkAvailabilityOfComparison($comparison))
+            if (!Comparisons::checkAvailabilityOfComparison($comparison)) {
                 throw new InvalidArgumentException("Unsupported comparison types. Please read documentation.");
+            }
 
             $this->createdAt[$comparison] = $date;
         }
@@ -145,11 +147,13 @@ class DictionaryFilter implements RequestInterface
     public function setUpdatedAt(array $updatedAt): DictionaryFilter
     {
         foreach ($updatedAt as $comparison => $date) {
-            if (!$date instanceof \DateTime)
+            if (!$date) {
                 throw new InvalidArgumentException('Invalid argument for date. Please read the documentation.');
+            }
 
-            if (!Comparisons::checkAvailabilityOfComparison($comparison))
+            if (!Comparisons::checkAvailabilityOfComparison($comparison)) {
                 throw new InvalidArgumentException("Unsupported comparison types. Please read documentation.");
+            }
 
             $this->updatedAt[$comparison] = $date;
         }
@@ -247,15 +251,11 @@ class DictionaryFilter implements RequestInterface
         }
 
         if (!empty($this->getCreatedAt())) {
-            $query['createdAt'] = array_map(function (\DateTime $date) {
-                return $date->format('Y-m-d H:i:s');
-            }, $this->getCreatedAt());
+            $query['createdAt'] = $this->getCreatedAt();
         }
 
         if (!empty($this->getUpdatedAt())) {
-            $query['updatedAt'] = array_map(function (\DateTime $date) {
-                return $date->format('Y-m-d H:i:s');
-            }, $this->getUpdatedAt());
+            $query['updatedAt'] = $this->getUpdatedAt();
         }
 
         if (!empty($this->getStatus())) {
